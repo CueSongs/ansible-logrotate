@@ -12,6 +12,10 @@
   with_items: logrotate
   sudo: yes
 
+- name: Check logrotate
+  shell: "logrotate"
+  sudo: yes
+
 - name: Cronjob for logrotate
   cron: name="logrotate" minute="0" hour="*/6" job="logrotate"
   sudo: yes
