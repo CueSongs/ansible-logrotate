@@ -4,16 +4,13 @@
   apt: name=logrotate state=present
   sudo: yes
 
-- name: Check logrotate
-  command: "logrotate -v"
-
 - name: Copy across application rules
   template: src=application.j2 dest=/etc/logrotate.d/{{ item.name }} owner=root mode=0644
   with_items: logrotate
   sudo: yes
 
 - name: Check logrotate
-  command: "logrotate"
+  command: "logrotate /etc/logrotate.conf"
   sudo: yes
 
 - name: Cronjob for logrotate
