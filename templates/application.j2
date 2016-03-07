@@ -1,0 +1,10 @@
+{{ item.log_path }} {
+	{{ item.basis }}
+	rotate {{ item.rotate }}
+	compress
+	delaycompress
+	missingok
+	notifempty
+  size {{ item.size }}
+	create 644 root root
+}

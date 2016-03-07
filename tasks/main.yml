@@ -1,2 +1,17 @@
 ---
-# tasks file for .
+
+- name: Install logrotate
+  apt: name=logrotate state=present
+  sudo: yes
+
+- name: Check logrotate
+  shell: "logrotate"
+
+- name: Copy across application rules
+  template: src=application.j2 dest=/etc/logrotate.d/{{ item.name }} owner=root mode=0644
+  with_items: logrotate
+  sudo: yes
+
+- name: Cronjob for logrotate
+  cron: name="logrotate" minute="0" hour="*/6" job="logrotate"
+  sudo: yes
