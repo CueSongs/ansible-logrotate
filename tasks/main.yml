@@ -14,5 +14,5 @@
   sudo: yes
 
 - name: Cronjob for logrotate
-  cron: name="logrotate" minute="0" hour="*/6" job="logrotate"
+  cron: name="logrotate" minute="0" hour="*/6" job="/usr/sbin/logrotate /etc/logrotate.conf"
   sudo: yes
