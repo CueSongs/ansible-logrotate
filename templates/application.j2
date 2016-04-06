@@ -6,5 +6,5 @@
 	missingok
 	notifempty
     size {{ item.size }}
-	create {{ item.permissions | default(664) }} {{ item.user | default(nginx) }} {{ item.group | default(nginx) }}
+	create {{ item.permissions | default(664) }} {{ item.user | default('nginx') }} {{ item.group | default('nginx') }}
 }
