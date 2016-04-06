@@ -5,6 +5,6 @@
 	delaycompress
 	missingok
 	notifempty
-  size {{ item.size }}
-	create 644 root root
+    size {{ item.size }}
+	create {{ item.permissions | default(664) }} {{ item.user | default(nginx) }} {{ item.group | default(nginx) }}
 }
